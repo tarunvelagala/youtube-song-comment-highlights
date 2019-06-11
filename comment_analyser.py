@@ -5,7 +5,7 @@ from PIL import Image
 from nltk.tokenize import RegexpTokenizer
 from textblob import TextBlob
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
-from main import *
+from .comment_scraper import lst_comments
 
 d = getcwd()
 blob = [TextBlob(i) for i in lst_comments]
@@ -56,7 +56,8 @@ wordcloud_pos = WordCloud(background_color='white', max_font_size=90, mask=mask,
 image_colors = ImageColorGenerator(mask)
 wordcloud_pos.generate(_filtered_pos)
 plt.figure()
-plt.imshow(wordcloud_pos.recolor(color_func=image_colors), interpolation='bilinear')
+plt.imshow(wordcloud_pos.recolor(
+    color_func=image_colors), interpolation='bilinear')
 plt.axis("off")
 plt.show()
 
@@ -66,6 +67,7 @@ wordcloud_neg = WordCloud(background_color='black', max_font_size=90, mask=mask,
 image_colors = ImageColorGenerator(mask)
 wordcloud_neg.generate(_filtered_neg)
 plt.figure()
-plt.imshow(wordcloud_neg.recolor(color_func=image_colors), interpolation='bilinear')
+plt.imshow(wordcloud_neg.recolor(
+    color_func=image_colors), interpolation='bilinear')
 plt.axis("off")
 plt.show()

@@ -1,19 +1,18 @@
 import time
 
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.chrome.options import Options
 
 # grab the url as the first command line argument
 _id = input('Enter a url id\n')
 url = "https://www.youtube.com/watch?v=" + _id
 
 # create a Chrome browser
-options = Options()
-opt_args = ['--headless', '--disable-gpu', 'start-maximized', 'disable-infobars',
-            "--disable-extensions", "--enable-javascript", '--window-size=1420,1080']
-for i in opt_args:
-    options.add_argument(i)
-driver = webdriver.Chrome('utilities/chromedriver.exe', chrome_options=options)
+# options = Options()
+'''options = webdriver.FirefoxOptions()
+options.add_argument('-headless')'''
+driver = webdriver.Firefox(
+    executable_path='utilities/geckodriver.exe')
 
 # open the url from the command line
 driver.get(url)
